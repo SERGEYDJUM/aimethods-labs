@@ -10,7 +10,7 @@ class App:
     def __init__(self) -> None:
         self.window = Tk()
         self.window.wm_resizable(False, False)
-        self.window.title("Upscaling Benchmark")
+        self.window.title("Бенчмарк Сервисов Апскейлинга")
 
         self.cur_image = 0
         self.latent_strength = 0.3
@@ -46,18 +46,18 @@ class App:
         self.psnr_label_r.grid(row=1, column=2)
 
         self.button_back = ttk.Button(
-            self.window, text="Back", command=self.prev_item, state=DISABLED
+            self.window, text="Предыдущее", command=self.prev_item, state=DISABLED
         )
         self.button_back.grid(row=2, column=0)
 
         self.button_process = ttk.Button(
-            self.window, text="Process", command=self.benchmark
+            self.window, text="Запуск", command=self.benchmark
         )
         self.button_process.grid(row=2, column=1)
 
         self.button_forward = ttk.Button(
             self.window,
-            text="Forward",
+            text="Следующее",
             command=self.next_item,
             state=DISABLED if len(self.img_paths) == 1 else NORMAL,
         )

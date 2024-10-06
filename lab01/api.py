@@ -19,7 +19,7 @@ def api_l(file_path: str) -> Mat:
 	    "x-rapidapi-host": "ai-image-upscaler1.p.rapidapi.com",
     }
 
-    # 3-6
+    # 3-5
     start = datetime.now()
     response = requests.post(url, data=data, files=files, headers=headers)
     dur = datetime.now() - start
@@ -49,7 +49,7 @@ def api_r(file_path: str, strength=0.3) -> Mat:
 	    "x-rapidapi-host": "vision-ai-api.p.rapidapi.com",
     }
 
-    # 18-40
+    # 18-30
     start = datetime.now()
     response = requests.post(url, data=data, files=files, headers=headers)
     dur = datetime.now() - start
