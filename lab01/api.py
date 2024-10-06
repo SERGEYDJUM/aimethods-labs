@@ -1,6 +1,7 @@
 import requests
 from utils import *
 from cv2 import Mat
+from datetime import datetime
 
 def api_l(file_path: str) -> Mat:
     url = "https://ai-image-upscaler1.p.rapidapi.com/v1"
@@ -18,7 +19,11 @@ def api_l(file_path: str) -> Mat:
 	    "x-rapidapi-host": "ai-image-upscaler1.p.rapidapi.com",
     }
 
+    # 3-6
+    start = datetime.now()
     response = requests.post(url, data=data, files=files, headers=headers)
+    dur = datetime.now() - start
+    print(f"API L: Got response after {dur.total_seconds()}")
     
     if response.status_code != 200:
         raise RuntimeError(f"request failed with code: {response.status_code}")
@@ -44,7 +49,11 @@ def api_r(file_path: str, strength=0.3) -> Mat:
 	    "x-rapidapi-host": "vision-ai-api.p.rapidapi.com",
     }
 
+    # 18-40
+    start = datetime.now()
     response = requests.post(url, data=data, files=files, headers=headers)
+    dur = datetime.now() - start
+    print(f"API R: Got response after {dur.total_seconds()}")
     
     if response.status_code != 200:
         raise RuntimeError(f"request failed with code: {response.status_code}")

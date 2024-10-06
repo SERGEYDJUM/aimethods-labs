@@ -6,7 +6,6 @@ from tkinter import ttk
 from utils import *
 from api import api_l, api_r
 
-
 class App:
     def __init__(self) -> None:
         self.window = Tk()
@@ -122,7 +121,9 @@ class App:
 
         cv2.imwrite(down_path, downscaled)
 
-        upscaled = api(down_path) if api_idx == 0 else api(down_path, self.latent_strength)
+        upscaled = (
+            api(down_path) if api_idx == 0 else api(down_path, self.latent_strength)
+        )
 
         cv2.imwrite(up_path, upscaled)
 
@@ -134,20 +135,24 @@ class App:
         os.makedirs("./downscaled", exist_ok=True)
         os.makedirs("./upscaled_1", exist_ok=True)
         os.makedirs("./upscaled_2", exist_ok=True)
-        
+
         print("Upscaling left...", flush=True)
         if self.psnr_results[0][self.cur_image] == 0.0:
             self.image_l = self.benchmark_side(api_l)
             self.img_label_l.config(image=self.image_l, borderwidth=3)
 
-        self.psnr_label_l.config(text=f"PSNR: {self.psnr_results[0][self.cur_image]:.2f}")
+        self.psnr_label_l.config(
+            text=f"PSNR: {self.psnr_results[0][self.cur_image]:.2f}"
+        )
 
         print("Upscaling right...", flush=True)
         if self.psnr_results[1][self.cur_image] == 0.0:
             self.image_r = self.benchmark_side(api_r)
             self.img_label_r.config(image=self.image_r, borderwidth=3)
 
-        self.psnr_label_r.config(text=f"PSNR: {self.psnr_results[1][self.cur_image]:.2f}")
+        self.psnr_label_r.config(
+            text=f"PSNR: {self.psnr_results[1][self.cur_image]:.2f}"
+        )
         print("Done")
 
 
