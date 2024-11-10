@@ -71,8 +71,10 @@ class App:
 
         self.token_cnt = int(self.token_cnt_inp.get())
         self.temperature = float(self.temp_slider.get())
-        
+                
         prompt = self.input.get("1.0", "999.999").strip()
+        
+        print(f"[{self.temperature:.2f} | {self.token_cnt}] {prompt}")
         
         if not prompt:
             return
@@ -80,7 +82,10 @@ class App:
         response = self.model.execute_prompt(
             prompt, temperature=self.temperature, max_new_tokens=self.token_cnt
         )
+        
         response = response.strip().removeprefix(prompt).strip()
+        
+        print(f">>> {response}")
 
         self.output.delete("1.0", "999.999")
         self.output.insert("1.0", response)
