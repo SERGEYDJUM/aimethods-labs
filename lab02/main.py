@@ -10,6 +10,8 @@ class App(Tk):
     base_font = ("CaskaydiaCove NF", 12)
 
     def __init__(self) -> None:
+        """Initializes tkinter UI for this application"""
+        
         Tk.__init__(self)
         self.model: Model = None
         self.temperature = 1.0
@@ -61,6 +63,7 @@ class App(Tk):
 
     def load_file(self) -> None:
         """Opens a dialogue to pick input text file"""
+        
         path = filedialog.askopenfilename()
 
         with open(path, encoding="utf-8") as file:
@@ -81,8 +84,9 @@ class App(Tk):
         self.token_cnt = int(self.token_cnt_inp.get())
         self.temperature = float(self.temp_slider.get())
 
+        # Get prompt from input
         prompt = self.input.get("1.0", "999.999").strip()
-
+        
         print(f"[{self.temperature:.2f} | {self.token_cnt}] >>> {prompt}")
 
         if not prompt:
@@ -96,6 +100,7 @@ class App(Tk):
 
         print(f"<<< {response}")
 
+        # Clear and paste text into output
         self.output.delete("1.0", "999.999")
         self.output.insert("1.0", response)
 

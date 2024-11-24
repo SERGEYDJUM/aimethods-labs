@@ -7,6 +7,10 @@ class Model:
     hf_repo = "ai-forever/rugpt3large_based_on_gpt2"
 
     def __init__(self) -> None:
+        """Constructs tokenizer and GPT-2 model.
+        Loads checkpoint and configs from HuggingFace repository.
+        """
+
         self.tokenizer = GPT2TokenizerFast.from_pretrained(self.hf_repo)
         self.model = GPT2LMHeadModel.from_pretrained(
             self.hf_repo,
@@ -17,6 +21,7 @@ class Model:
 
     def execute_prompt(self, prompt: str, **kwargs) -> str:
         """Generates tokens from prompt with pass-through keyword arguments"""
+
         tokens = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
 
         beam_output = self.model.generate(
