@@ -31,6 +31,8 @@ class Model:
             # These two parameters enable Beam-search Multinomial Sampling
             do_sample=True,
             num_beams=4,
+            # Ends beam propagation on EOS token
+            early_stopping=True,
             **kwargs,
         )
 
