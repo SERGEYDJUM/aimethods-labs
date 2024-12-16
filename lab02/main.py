@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter import ttk
-from model_infer import Model
+from .model_infer import Model
 
 
 class App(Tk):

@@ -1,0 +1,16 @@
+[project]
+name = "aimethods-labs"
+version = "0.1.0"
+description = "AI Methods labs"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.11.10",
+    "asyncio>=3.4.3",
+    "numpy>=2.2.0",
+    "opencv-python>=4.10.0.84",
+    "pillow>=11.0.0",
+    "requests>=2.32.3",
+    "torch>=2.5.1",
+    "transformers>=4.47.0",
+]

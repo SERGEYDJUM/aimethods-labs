@@ -1,5 +1,5 @@
 import requests
-from utils import *
+from .utils import *
 from cv2 import Mat
 from datetime import datetime
 

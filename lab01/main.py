@@ -3,8 +3,8 @@ from typing import Callable
 import cv2
 from tkinter import *
 from tkinter import ttk
-from utils import *
-from api import api_l, api_r
+from .utils import *
+from .api import api_l, api_r
 
 class App:
     def __init__(self) -> None:
@@ -15,8 +15,8 @@ class App:
         self.cur_image = 0
         self.latent_strength = 0.3
         self.img_paths = [
-            "./test_set/" + item
-            for item in os.listdir("./test_set")
+            "lab01/test_set/" + item
+            for item in os.listdir("lab01/test_set")
             if item.endswith(".png")
         ]
 
@@ -132,9 +132,9 @@ class App:
         return cv2_to_tk(upscaled)
 
     def benchmark(self):
-        os.makedirs("./downscaled", exist_ok=True)
-        os.makedirs("./upscaled_1", exist_ok=True)
-        os.makedirs("./upscaled_2", exist_ok=True)
+        os.makedirs("lab01/downscaled", exist_ok=True)
+        os.makedirs("lab01/upscaled_1", exist_ok=True)
+        os.makedirs("lab01/upscaled_2", exist_ok=True)
 
         print("Upscaling left...", flush=True)
         if self.psnr_results[0][self.cur_image] == 0.0:
