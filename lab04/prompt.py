@@ -34,13 +34,14 @@ class Phi3PromptFormat:
 
     def stop_conditions_ids(self, tokenizer: ExLlamaV2Tokenizer) -> list[int]:
         stops = [tokenizer.eos_token_id]
-
         stops.extend(
             filter(
                 lambda x: x is not None,
                 map(lambda x: tokenizer.single_id(x), self.stop_conditions_strings()),
             )
         )
+        
+        return stops
 
     def encoding_options(self) -> tuple[bool, bool, bool]:
         return False, False, True
