@@ -11,6 +11,7 @@ dependencies = [
     "exllamav2",
     "loguru>=0.7.3",
     "numpy>=2.2.0",
+    "openai>=1.58.1",
     "opencv-python>=4.10.0.84",
     "pillow>=11.0.0",
     "requests>=2.32.3",
