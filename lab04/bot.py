@@ -69,6 +69,13 @@ async def bot_answer(
     purpose: str = "Not given, deduce from text.",
     disable_ai: bool = False,
 ) -> None:
+    """Creates AI generated response from example ans purpose.
+
+    Args:
+        example (str): Generic reply example.
+        purpose (str, optional): Purpose of the reply. Defaults to "Not given, deduce from text.".
+        disable_ai (bool, optional): Passes example to output with no AI. Defaults to False.
+    """
     data = await state.get_data()
     history, local = data["history"], data["local"]
 
@@ -93,6 +100,11 @@ async def bot_answer(
 
 
 async def store_user_message(message: Message, state: FSMContext) -> dict[str, Any]:
+    """Saves user message to history.
+
+    Returns:
+        dict[str, Any]: Updated context data.
+    """
     data = await state.get_data()
     data["history"].append(LLMMessage(LLMRole.USER, message.text))
     return await state.update_data(history=data["history"])
