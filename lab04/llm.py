@@ -26,6 +26,8 @@ class LLMMessage:
 
 
 class AsyncGenericModel:
+    """Base class for asynchronous model executors"""
+
     async def invoke(
         self,
         user_prompt: str,
@@ -33,11 +35,13 @@ class AsyncGenericModel:
         remind_to_end: bool = True,
         **kwargs,
     ) -> str:
+        """Generate response for one message"""
         raise RuntimeError("Abstract model called")
 
     async def invoke_messages(
         self, messages: list[LLMMessage], remind_to_end: bool = True, **kwargs
     ) -> str:
+        """Generate next message for given message history"""
         raise RuntimeError("Abstract model called")
 
 

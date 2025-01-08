@@ -148,7 +148,7 @@ async def resolve_name(message: Message, state: FSMContext) -> None:
             message,
             state,
             f"{name}, are you here because of a dental health {html.bold('problem')}?",
-            "Determine whether user has a real and urgent problem or not.",
+            "Determine whether user has a real and urgent problem or not (Yes/No/Not sure).",
         )
         await state.set_state(states.care_category)
     else:
@@ -256,7 +256,7 @@ async def resolve_care_confirmation(message: Message, state: FSMContext) -> None
                 message,
                 state,
                 f"Are you fine with the following date and time: {date.isoformat(timespec='minutes')}?",
-                "To confirm that appointment time fits the user.",
+                "To confirm that appointment time fits the user (Y/N).",
             )
             await state.set_state(states.date_confirmation)
         else:
@@ -264,7 +264,7 @@ async def resolve_care_confirmation(message: Message, state: FSMContext) -> None
                 message,
                 state,
                 "Ok. Then let's start from the beginning. Are you here because of a serious dental health problem?",
-                "Determine whether user has an urgent, non-cosmetic problem.",
+                "Determine whether user has an urgent, non-cosmetic problem (Y/N).",
             )
             await state.set_state(states.care_category)
     else:
@@ -322,7 +322,7 @@ async def resolve_number(message: Message, state: FSMContext) -> None:
             message,
             state,
             PROTOCOL.format(**data),
-            "Present final appointment information to user and ask for user's agreement.",
+            "Present appointment information to user in a friendly format and ask for user's final confirmation.",
         )
         await state.set_state(states.final_confirmation)
     else:
